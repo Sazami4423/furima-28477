@@ -13,6 +13,12 @@
 | name_kana        | string     | null: false |
 | birthday         | integer    | null: false |
 
+### Association
+
+- has_many :products
+- has_many :orders
+
+
 ## productsテーブル
 
 | Colum            | Type       | Options     |
@@ -27,6 +33,12 @@
 | price            | integer    | null: false |
 | user_id          | references | null: false |
 
+### Association
+
+- has_one   :order
+- belongs_to :users
+
+
 ## ordersテーブル
 
 | Colum            | Type       | Options     |
@@ -39,3 +51,8 @@
 | tel              | integer    | null: false |
 | user_id          | references | ----------- |
 | products_id      | references | ----------- |
+
+### Association
+
+- belongs_to :products
+- belongs_to :users
