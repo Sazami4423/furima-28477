@@ -13,7 +13,6 @@
 | name_kana        | string     | null: false |
 | birthday         | integer    | null: false |
 
-
 ## productsテーブル
 
 | Colum            | Type       | Options     |
