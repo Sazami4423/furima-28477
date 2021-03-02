@@ -4,7 +4,7 @@
 
 | Colum              | Type       | Options                  |
 | ------------------ | ---------- | ------------------------ |
-| nickname           | string     | null: false uniqueness   |
+| nickname           | string     | null: false              |
 | email              | string     | null: false unique: true |
 | encrypted_password | string     | null: false              |
 | surname            | string     | null: false              |
@@ -15,8 +15,8 @@
 
 ### Association
 
-  has_many :product
-  has_many :product_purchase_management
+  has_many :products
+  has_many :product_purchase_managements
 
 
 ## productsテーブル
@@ -27,7 +27,7 @@
 | description_text    | text       | null: false                   |
 | category_id         | integer    | null: false                   |
 | product_status_id   | integer    | null: false                   |
-| shipping_fee_id     | integer    | null: false                   |
+| prefectures_id      | integer    | null: false                   |
 | shipment_source_id  | integer    | null: false                   |
 | days_id             | integer    | null: false                   |
 | price               | integer    | null: false                   |
@@ -53,7 +53,7 @@
 
  ### Association
 
-  belongs_to :product_purchase_managements
+  belongs_to :product_purchase_management
 
  ## product_purchase_managementsテーブル
 
