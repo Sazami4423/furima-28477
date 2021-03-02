@@ -1,6 +1,6 @@
-<mxfile host="65bd71144e" modified="2021-03-01T14:00:47.824Z" agent="5.0 (Macintosh; Intel Mac OS X 11_2_2) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.53.2 Chrome/87.0.4280.141 Electron/11.2.1 Safari/537.36" etag="Az7-vJcQXJACKvJ921tM" version="14.2.4" type="embed">
+<mxfile host="65bd71144e" modified="2021-03-02T03:17:07.193Z" agent="5.0 (Macintosh; Intel Mac OS X 11_2_2) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.53.2 Chrome/87.0.4280.141 Electron/11.2.1 Safari/537.36" etag="YF67uKmsb6gygQpo45kb" version="14.2.4" type="embed">
     <diagram id="2QYU8HMbSwHEbvXh10Gc" name="ページ1">
-        <mxGraphModel dx="1126" dy="539" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+        <mxGraphModel dx="1189" dy="807" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -208,7 +208,7 @@
                 <mxCell id="182" value="ﾒｰﾙｱﾄﾞﾚｽ" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;editable=1;overflow=hidden;" parent="181" vertex="1">
                     <mxGeometry width="50" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="183" value="email(string型, NOT NULL, uniqueness)" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;" parent="181" vertex="1">
+                <mxCell id="183" value="email(string型, NOT NULL, unique: true)" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;fontStyle=0" parent="181" vertex="1">
                     <mxGeometry x="50" width="240" height="30" as="geometry"/>
                 </mxCell>
                 <mxCell id="184" value="" style="shape=partialRectangle;collapsible=0;dropTarget=0;pointerEvents=0;fillColor=none;top=0;left=0;bottom=0;right=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="174" vertex="1">
@@ -262,7 +262,7 @@
                 <mxCell id="200" value="生年月日" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;editable=1;overflow=hidden;" parent="199" vertex="1">
                     <mxGeometry width="50" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="201" value="birthday(data型, NOT NULL)" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;" parent="199" vertex="1">
+                <mxCell id="201" value="birthday(date型, NOT NULL)" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;" parent="199" vertex="1">
                     <mxGeometry x="50" width="240" height="30" as="geometry"/>
                 </mxCell>
                 <mxCell id="204" value="" style="edgeStyle=entityRelationEdgeStyle;fontSize=12;html=1;endArrow=ERoneToMany;startArrow=ERone;exitX=1.004;exitY=-0.033;exitDx=0;exitDy=0;exitPerimeter=0;entryX=-0.014;entryY=1.033;entryDx=0;entryDy=0;entryPerimeter=0;endSize=32;startSize=32;startFill=0;" parent="1" source="190" target="111" edge="1">
@@ -271,7 +271,7 @@
                         <mxPoint x="460" y="210" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="206" value="" style="edgeStyle=orthogonalEdgeStyle;fontSize=12;html=1;endArrow=ERone;startArrow=ERmany;targetPerimeterSpacing=11;endSize=32;startSize=32;startFill=0;endFill=0;entryX=0.603;entryY=1.1;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="226" target="212" edge="1">
+                <mxCell id="206" value="" style="edgeStyle=orthogonalEdgeStyle;fontSize=12;html=1;endArrow=ERone;startArrow=ERone;targetPerimeterSpacing=11;endSize=32;startSize=32;startFill=0;endFill=0;entryX=0.603;entryY=1.1;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="226" target="212" edge="1">
                     <mxGeometry width="100" height="100" relative="1" as="geometry">
                         <mxPoint x="500" y="500" as="sourcePoint"/>
                         <mxPoint x="680" y="400" as="targetPoint"/>

@@ -2,20 +2,20 @@
 
 ## usersテーブル
 
-| Colum              | Type       | Options                |
-| ------------------ | ---------- | ---------------------- |
-| nickname           | string     | null: false uniqueness |
-| email              | string     | null: false            |
-| encrypted_password | string     | null: false            |
-| surname            | string     | null: false            |
-| name               | string     | null: false            |
-| surname_kana       | string     | null: false            |
-| name_kana          | string     | null: false            |
-| birthday           | data       | null: false            |
+| Colum              | Type       | Options                  |
+| ------------------ | ---------- | ------------------------ |
+| nickname           | string     | null: false uniqueness   |
+| email              | string     | null: false unique: true |
+| encrypted_password | string     | null: false              |
+| surname            | string     | null: false              |
+| name               | string     | null: false              |
+| surname_kana       | string     | null: false              |
+| name_kana          | string     | null: false              |
+| birthday           | date       | null: false              |
 
 ### Association
 
-  has_many :products
+  has_many :product
   has_many :product_purchase_management
 
 
@@ -36,7 +36,7 @@
 ### Association
 
   belongs_to :user
-  has_many :product_purchase_management
+  has_one :product_purchase_management
 
 
 ## ordersテーブル
@@ -64,9 +64,8 @@
 
  ### Association
   
-  has_one    :orders
-  belongs_to :users
-  belongs_to :products
-  belongs_to :order
+  has_one    :order
+  belongs_to :user
+  belongs_to :product
   
   
