@@ -4,18 +4,24 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  with_options presence: true do
+    #ひら、カナ、漢字のみ許可
+    validates :surname, :name, format: {with: /\A[ぁ-んァ-ヶ一-龥々]+\z/, message: "is invalid. Input full-width characters."}
+    #カナのみ許可
+    validates :surname_kana, :name_kana, format: {with: /\A[ァ-ヶー－]+\z/, message: "is invalid. Input full-width katakana characters."}
+    #半角英数字混合のみ許可(6文字以下不可)
+    validates :encrypted_password, :password, :password_confirmation, format:{with: /(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d]{6,}/}
+
+  end
+
   validates :surname, presence: true
   validates :name, presence: true
   validates :surname_kana, presence: true
   validates :name_kana, presence: true
   validates :birthday, presence: true
 
-  # validate :password_complexty
+  has_many :products
+  # has_many :product_purchase_managements
 
-  # def password_complexity
-  #   return if password.blank? || password =~ /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{6,100}$/
-
-  #   errors.add :password, 'Complexity requirement not met. Length should be 8-70 characters and include: 1 uppercase, 1 lowercase, 1 digit and 1 special character'
-  # end
 
 end
