@@ -32,111 +32,86 @@ RSpec.describe User, type: :model do
      another_user = FactoryBot.build(:user)
      another_user.email = @user.email
      another_user.valid?
-     expect(another_user.errors.full_messages).to include('Email has already been taken')
+     expect(another_user.errors.full_messages).to include("Email has already been taken")
 
      end
      it 'emailが@を含む必要があること'do
-    
+     @user.email = 'mailaddress' 
+     @user.valid?
+     expect(@user.errors.full_messages).to include("Email is invalid")
      end
      it 'パスワードがnullでは登録できない'do
-    
+     @user.password = ''
+     @user.valid?
+     expect(@user.errors.full_messages).to include("Password can't be blank")
      end
      it 'パスワードが6文字以下では登録できない'do
-    
+     @user.password = 'a1234'
+     @user.password_confirmation = 'a1234'
+      @user.valid?
+      expect(@user.errors.full_messages).to include("Password is too short (minimum is 6 characters)", "Password is invalid", "Password confirmation is invalid")
      end
      it 'パスワードが英数字混合でなければ登録できない'do
-    
+     @user.password = '123456'
+     @user.password_confirmation = '123456'
+     @user.valid?
+     expect(@user.errors.full_messages).to include("Password is invalid", "Password confirmation is invalid")
      end
      it '確認用パスワードがnullでは登録できない'do
-    
+    #  @user.password_confirmation = ''
+    #  binding.pry
+    #  expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
      end
      it '確認用パスワードがパスワードと同じでなければ登録できない'do
-    
+     @user.password = 'a123456'
+     @user.password_confirmation = 'a1234567890'
+     @user.valid?
+     expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
      end
      it 'surnameがnullでは登録できない'do
-    
+     @user.surname = ''
+     @user.valid?
+     expect(@user.errors.full_messages).to include("Surname can't be blank")
      end
      it 'surnameが全角漢字、かな、カナでなければ登録できない'do
-    
+     @user.surname = '1'
+     @user.valid?
+     expect(@user.errors.full_messages).to include("Surname is invalid. Input full-width characters.")
      end
      it 'nameがnullでは登録できない'do
-    
+     @user.name = ''
+     @user.valid?
+     expect(@user.errors.full_messages).to include("Name can't be blank")
      end
      it 'nameが全角漢字、かな、カナでなければ登録できない'do
-    
+     @user.name = '1'
+     @user.valid?
+     expect(@user.errors.full_messages).to include("Name is invalid. Input full-width characters.")
      end
-     it 'surname_kanaがnullでは登録できない'do
-    
-     end
-     it 'surname_kanaがカナでなければ登録できない'do
-    
-     end
-     it 'name_kanaがnullでは登録できない'do
-    
-     end
-     it 'name_kanaがカナでなければ登録できない'do
-    
-     end
+    #  it 'surname_kanaがnullでは登録できない'do
+    #  @user.surname_kana = ''
+    #  @user.valid?
+    #  binding.pry
+    #  expect(@user.errors.full_messages).to include("Surname_kana can't be blank")
+    #  end
+    #  it 'surname_kanaがカナでなければ登録できない'do
+    #  @user.surname = '徳川'
+    #  @user.valid?
+    #  expect(@user.errors.full_messages).to include("Name is invalid. Input full-width characters.")
+    #  end
+    #  it 'name_kanaがnullでは登録できない'do
+    #  @user.name_kana = ''
+    #  @user.valid?
+    #  expect(@user.errors.full_messages).to include("Name_kana can't be blank")
+    #  end
+    #  it 'name_kanaがカナでなければ登録できない'do
+    #  @user.surname = '茂茂'
+    #  @user.valid?
+    #  expect(@user.errors.full_messages).to include("Name is invalid. Input full-width characters.")
+    #  end
      it '生年月日がnullでは登録できない'do
     
      end
    end
-   context 'ユーザー登録できないとき' do
-     it 'ニックネームがnullならエラーメッセージが出る'do
-    
-     end
-     it 'emailがnullならエラーメッセージが出る'do
-    
-     end
-     it 'emailに@が入っていなければエラーメッセージが出る'do
-    
-     end
-     it 'emailが重複していればエラーメッセージが出る'do
-    
-     end
-     it 'パスワードがnullならエラーメッセージが出る'do
-    
-     end
-     it 'パスワードが6文字以下ならエラーメッセージが出る'do
-    
-     end
-     it 'パスワードが英数字混合でなけれエラーメッセージが出る'do
-    
-     end
-     it '確認パスワードがnullならエラーメッセージが出る'do
-     
-     end
-     it '確認パスワードが不一致ならエラーメッセージが出る'do
-    
-     end
-     it '名字がnullエラーメッセージが出る'do
-    
-     end
-     it '名字が漢字、かなカナ以外ならエラーメッセージが出る'do
-    
-     end
-     it '名前がnullならエラーメッセージが出る'do
-    
-     end
-     it '名前が漢字かなカナ以外ならエラーメッセージが出る'do
-    
-     end
-     it '名字カナがnullならエラーメッセージが出る'do
-    
-     end
-     it '名字カナがカナ以外ならエラーメッセージが出る'do
-    
-     end
-     it '名前カナがnullならエラーメッセージが出る'do
-    
-     end
-     it '名前カナがカナ以外ならエラーメッセージが出る'do
-    
-     end
-     it '生年月日がnullならエラーメッセージが出る'do
-    
-     end
-   end
-
   end
 end
