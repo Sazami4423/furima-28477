@@ -13,11 +13,7 @@ class User < ApplicationRecord
     validates :encrypted_password, :password, :password_confirmation, format:{with: /(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d]{6,}/}
 
   end
-
-  validates :surname, presence: true
-  validates :name, presence: true
-  validates :surname_kana, presence: true
-  validates :name_kana, presence: true
+  validates :nickname, presence: true
   validates :birthday, presence: true
 
   has_many :products
