@@ -27,8 +27,8 @@
 | description_text    | text       | null: false                   |
 | category_id         | integer    | null: false                   |
 | product_status_id   | integer    | null: false                   |
+| shipping_fee_id     | integer    | null: false                   |
 | prefectures_id      | integer    | null: false                   |
-| shipment_source_id  | integer    | null: false                   |
 | days_id             | integer    | null: false                   |
 | price               | integer    | null: false                   |
 | user                | references | null: false foreign_key: true |
