@@ -6,6 +6,6 @@ class Shipping_fee < ActiveHash::Base
   ]
 
   include ActiveHash::Associations
-  has_many :articles
+  has_many :products
   
   end
