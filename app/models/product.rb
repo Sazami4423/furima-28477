@@ -10,7 +10,7 @@ class Product < ApplicationRecord
   # 空の投稿を保存できないようにする
   validates :image, :title, :description_text, presence: true
 
-  #priceのバリテーション
+  # priceのバリテーション
   validate :price_tax
 
   # ジャンルの選択が「--」の時は保存できないようにする
@@ -30,9 +30,9 @@ class Product < ApplicationRecord
     if price.blank?
       errors[:base] << "Price can't be blank"
     elsif price < 300
-      errors[:base] << "Please enter a Price of 300 or more"
-    elsif price > 9999999
-      errors[:base] << "Please enter Price within 9,999,999"
+      errors[:base] << 'Please enter a Price of 300 or more'
+    elsif price > 9_999_999
+      errors[:base] << 'Please enter Price within 9,999,999'
     end
   end
 end

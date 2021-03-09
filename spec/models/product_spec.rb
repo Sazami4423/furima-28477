@@ -31,27 +31,27 @@ RSpec.describe Product, type: :model do
       it 'category_idが--では登録できない' do
         @product.category_id = '1'
         @product.valid?
-        expect(@product.errors.full_messages).to include("Category must be other than 1")
+        expect(@product.errors.full_messages).to include('Category must be other than 1')
       end
       it 'product_status_idが--(1)では登録できない' do
         @product.product_status_id = '1'
         @product.valid?
-        expect(@product.errors.full_messages).to include("Product status must be other than 1")
+        expect(@product.errors.full_messages).to include('Product status must be other than 1')
       end
       it 'shipping_fee_idが--(1)では登録できない' do
         @product.shipping_fee_id = '1'
         @product.valid?
-        expect(@product.errors.full_messages).to include("Shipping fee must be other than 1")
+        expect(@product.errors.full_messages).to include('Shipping fee must be other than 1')
       end
       it 'prefectures_idが--(1)では登録できない' do
         @product.prefectures_id = '1'
         @product.valid?
-        expect(@product.errors.full_messages).to include("Prefectures must be other than 1")
+        expect(@product.errors.full_messages).to include('Prefectures must be other than 1')
       end
       it 'days_idが--(1)では登録できない' do
         @product.days_id = '1'
         @product.valid?
-        expect(@product.errors.full_messages).to include("Days must be other than 1")
+        expect(@product.errors.full_messages).to include('Days must be other than 1')
       end
     end
 
@@ -64,52 +64,52 @@ RSpec.describe Product, type: :model do
       it 'priceに文字列を入力したら登録できない' do
         @product.price = 'あいうえお'
         @product.valid?
-        expect(@product.errors.full_messages).to include("Please enter a Price of 300 or more")
+        expect(@product.errors.full_messages).to include('Please enter a Price of 300 or more')
       end
       it 'priceに全角英字を入力したら登録できない' do
         @product.price = 'ABCDEFG'
         @product.valid?
-        expect(@product.errors.full_messages).to include("Please enter a Price of 300 or more")
+        expect(@product.errors.full_messages).to include('Please enter a Price of 300 or more')
       end
       it 'priceに半角英字を入力したら登録できない' do
         @product.price = 'abcdefg'
         @product.valid?
-        expect(@product.errors.full_messages).to include("Please enter a Price of 300 or more")
+        expect(@product.errors.full_messages).to include('Please enter a Price of 300 or more')
       end
       it 'priceに全角数字を入力したら登録できない' do
         @product.price = '１２３４５６７８９'
         @product.valid?
-        expect(@product.errors.full_messages).to include("Please enter a Price of 300 or more")
+        expect(@product.errors.full_messages).to include('Please enter a Price of 300 or more')
       end
       it 'priceに文字列と半角数字を入力したら登録できない' do
         @product.price = 'あいうえお5000'
         @product.valid?
-        expect(@product.errors.full_messages).to include("Please enter a Price of 300 or more")
+        expect(@product.errors.full_messages).to include('Please enter a Price of 300 or more')
       end
       it 'priceに全角半角混合数字を入力したら登録できない' do
         @product.price = '５００500'
         @product.valid?
-        expect(@product.errors.full_messages).to include("Please enter a Price of 300 or more")
+        expect(@product.errors.full_messages).to include('Please enter a Price of 300 or more')
       end
       it 'priceに英字半角混合数字を入力したら登録できない' do
         @product.price = 'ABCD500'
         @product.valid?
-        expect(@product.errors.full_messages).to include("Please enter a Price of 300 or more")
+        expect(@product.errors.full_messages).to include('Please enter a Price of 300 or more')
       end
       it 'priceに半角英字半角混合数字を入力したら登録できない' do
         @product.price = 'abcd500'
         @product.valid?
-        expect(@product.errors.full_messages).to include("Please enter a Price of 300 or more")
+        expect(@product.errors.full_messages).to include('Please enter a Price of 300 or more')
       end
       it 'priceが300円以下だと登録できない' do
         @product.price = '299'
         @product.valid?
-        expect(@product.errors.full_messages).to include("Please enter a Price of 300 or more")
+        expect(@product.errors.full_messages).to include('Please enter a Price of 300 or more')
       end
       it 'priceが9,999,999円以上だと登録できない' do
         @product.price = '10000000'
         @product.valid?
-        expect(@product.errors.full_messages).to include("Please enter Price within 9,999,999")
+        expect(@product.errors.full_messages).to include('Please enter Price within 9,999,999')
       end
     end
   end
