@@ -107,7 +107,7 @@ RSpec.describe Product, type: :model do
         expect(@product.errors.full_messages).to include("Please enter a Price of 300 or more")
       end
       it 'priceが9,999,999円以上だと登録できない' do
-        @product.price = '1103354300000000'
+        @product.price = '10000000'
         @product.valid?
         expect(@product.errors.full_messages).to include("Please enter Price within 9,999,999")
       end
