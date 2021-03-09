@@ -14,11 +14,13 @@ class Product < ApplicationRecord
   validate :price_tax
 
   # ジャンルの選択が「--」の時は保存できないようにする
-  validates :category_id, numericality: { other_than: 1 }
-  validates :product_status_id, numericality: { other_than: 1 }
-  validates :shipping_fee_id, numericality: { other_than: 1 }
-  validates :prefectures_id, numericality: { other_than: 1 }
-  validates :days_id, numericality: { other_than: 1 }
+  with_options numericality: { other_than: 1 } do
+  validates :category_id
+  validates :product_status_id
+  validates :shipping_fee_id
+  validates :prefectures_id
+  validates :days_id
+  end
 
   # モデル間アソシエーション
   belongs_to :user
