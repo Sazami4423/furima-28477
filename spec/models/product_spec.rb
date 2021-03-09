@@ -112,5 +112,12 @@ RSpec.describe Product, type: :model do
         expect(@product.errors.full_messages).to include('Please enter Price within 9,999,999')
       end
     end
+    context '他テーブル関連' do
+      it 'userが紐付かない場合は登録できない' do
+        @product.user = nil
+        @product.valid?
+        expect(@product.errors.full_messages).to include('User must exist')
+      end
+   end
   end
 end
