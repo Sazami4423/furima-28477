@@ -36,7 +36,7 @@
 ### Association
 
   belongs_to :user
-  <!-- has_one :product_purchase_management -->
+  has_one :product_purchase_management
 
 
 ## ordersテーブル
