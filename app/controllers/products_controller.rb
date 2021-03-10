@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :set_product, only: [:show, :edit]
+  before_action :set_product, only: [:show, :edit, :update]
 
   def index
     @products = Product.includes(:user).order('created_at DESC')
@@ -14,6 +14,14 @@ class ProductsController < ApplicationController
   end
 
   def edit
+  end
+
+  def update
+     if @product.update(product_params)
+      redirect_to root_path
+    else
+      render :edit
+    end
   end
 
   def create
