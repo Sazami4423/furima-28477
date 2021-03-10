@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
-  before_action :authenticate_user!, except: [:index]
+  before_action :authenticate_user!, except: [:index, :show]
+  before_action :set_product, except: [:show]
 
   def index
     @products = Product.includes(:user).order('created_at DESC')
@@ -27,6 +28,11 @@ class ProductsController < ApplicationController
     params.require(:product).permit(:image, :title, :description_text, :category_id,
                                     :product_status_id, :shipping_fee_id, :prefectures_id, :days_id, :price).merge(user_id: current_user.id)
   end
+
+  def set_product
+    @product = Tweet.find(params[:id])
+  end
+
 
 
 end
