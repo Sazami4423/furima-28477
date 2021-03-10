@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
-  before_action :authenticate_user!, except: [:index]
+  before_action :authenticate_user!, except: [:index, :show]
+  before_action :set_product, only: [:show]
 
   def index
     @products = Product.includes(:user).order('created_at DESC')
@@ -7,6 +8,9 @@ class ProductsController < ApplicationController
 
   def new
     @product = Product.new
+  end
+
+  def show
   end
 
   def create
@@ -25,5 +29,7 @@ class ProductsController < ApplicationController
                                     :product_status_id, :shipping_fee_id, :prefectures_id, :days_id, :price).merge(user_id: current_user.id)
   end
 
-
+  def set_product
+    @product = Product.find(params[:id])
+  end
 end
