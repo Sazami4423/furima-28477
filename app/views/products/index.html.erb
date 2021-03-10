@@ -125,8 +125,8 @@
     <h2 class='title'>ピックアップカテゴリー</h2>
     <%= link_to '新規投稿商品', new_product_path, class: "subtitle" %>
     <ul class='item-lists'>
-        <% if @product.present? %>
-        <% @product.each do |item|  %>
+        <% if @products.present? %>
+        <% @products.each do |item|  %>
         <li class='list'>
         <%= link_to products_path(item.id) do %>
         <div class='item-img-content'>
@@ -143,7 +143,7 @@
             <%= item.title %>
           </h3>
           <div class='item-price'>
-            <span><%= item.price %>円<br><%= item.shipping_fee_id %></span>
+            <span><%= item.price %>円<br><%= item.shipping_fee.name %></span>
             <div class='star-btn'>
               <%= image_tag "star.png", class:"star-icon" %>
               <span class='star-count'>0</span>
