@@ -7,7 +7,7 @@
     <h2 class="items-sell-title">商品の情報を入力</h2>
     <%= form_with(model: @product, local: true) do |f| %>
     <%= render 'shared/error_messages', model: f.object %>
-  <%# 出品画像 %>
+    <%# 出品画像 %>
     <div class="img-upload">
       <div class="weight-bold-text">
         出品画像
@@ -132,12 +132,11 @@
       </p>
     </div>
     <%# /注意書き %>
-    
-    
+
     <%# 下部ボタン %>
     <div class="sell-btn-contents">
-      <%= f.submit "出品する" ,class:"sell-btn" %>
-      <%=link_to 'もどる', root_path, class:"back-btn" %>
+      <%= f.submit "変更する" ,class:"sell-btn" %>
+      <%=link_to 'もどる', "#", class:"back-btn" %>
     </div>
     <%# /下部ボタン %>
   </div>
