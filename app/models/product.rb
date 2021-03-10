@@ -15,11 +15,11 @@ class Product < ApplicationRecord
 
   # ジャンルの選択が「--」の時は保存できないようにする
   with_options numericality: { other_than: 1 } do
-  validates :category_id
-  validates :product_status_id
-  validates :shipping_fee_id
-  validates :prefectures_id
-  validates :days_id
+    validates :category_id
+    validates :product_status_id
+    validates :shipping_fee_id
+    validates :prefectures_id
+    validates :days_id
   end
 
   # モデル間アソシエーション
