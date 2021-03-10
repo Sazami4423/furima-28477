@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :set_product, only: [:show, :edit, :update]
+  before_action :set_product, only: [:show, :edit, :update, :destroy]
   before_action :user_check, only: [:edit, :update]
 
   def index
@@ -15,6 +15,10 @@ class ProductsController < ApplicationController
   end
 
   def edit
+  end
+
+  def detroy
+    redirect_to root_path
   end
 
   def update
