@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :set_product, except: [:show]
+  before_action :set_product, only: [:show]
 
   def index
     @products = Product.includes(:user).order('created_at DESC')
@@ -30,7 +30,7 @@ class ProductsController < ApplicationController
   end
 
   def set_product
-    @product = Tweet.find(params[:id])
+    @product = Product.find(params[:id])
   end
 
 
