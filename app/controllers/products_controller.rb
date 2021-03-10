@@ -23,7 +23,7 @@ class ProductsController < ApplicationController
   end
 
   def update
-     if @product.update(product_params)
+    if @product.update(product_params)
       redirect_to root_path
     else
       render :edit
@@ -51,8 +51,6 @@ class ProductsController < ApplicationController
   end
 
   def user_check
-    if @product.user.id != current_user.id 
-      redirect_to root_path 
-    end  
+    redirect_to root_path if @product.user.id != current_user.id
   end
 end
