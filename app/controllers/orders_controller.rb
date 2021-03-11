@@ -1,4 +1,7 @@
 class OrdersController < ApplicationController
+  before_action :authenticate_user!
+  before_action :set_product, only: [:index, :create]
+  before_action :user_check, only: [:index,]
 
   def index
     @order = Order.new
@@ -7,7 +10,7 @@ class OrdersController < ApplicationController
   def create
     @prder = Order.new(order_params)
     if @order.valid?
-      # pay_item
+      pay_product
       @order.save
       return redirect_to root_path
     else
@@ -18,10 +21,11 @@ class OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:).merge(token: params[:token])
+    params.require(:order).permit(:postal_code, :prefectures_id, 
+      :municipalities, :address, :building_name, :tel, :price).merge(product_id: @product.id, token: params[:token], user_id: current_user.id)
   end
 
-  def pay_item
+  def pay_product
     Payjp.api_key = ENV["PAYJP_SECRET_KEY"]    # 自身のPAY.JPテスト秘密鍵
     Payjp::Charge.create(
       amount: order_params[:price],            # 商品の値段
@@ -29,5 +33,15 @@ class OrdersController < ApplicationController
       currency:'jpy'                           # 通貨の種類（日本円）
     )
  end
+
+ def set_product
+    @product = Product.find(params[:id])
+ end
+
+ def user_check
+  if @item.user_id == current_user.id || !@product.product_purchase_managementsnil?
+    redirect_to root_path
+  end
+end
 
 end

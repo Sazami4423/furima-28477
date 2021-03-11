@@ -9,6 +9,7 @@ class Order < ApplicationRecord
   # バリテーション
   validates :prefectures_id, numericality: { other_than: 1 }
   with_options  presence: true do
+    validates :token
     validates :postal_code
     validates :municipalities 
     validates :address
