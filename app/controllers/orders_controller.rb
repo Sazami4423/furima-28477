@@ -35,10 +35,12 @@ class OrdersController < ApplicationController
   end
 
   def set_product
-    @product = Product.find(params[:id])
+    @product = Product.find(params[:product_id])
   end
 
   def user_check
-    redirect_to root_path if @item.user_id == current_user.id || !@product.product_purchase_management.nil?
+    if @product.user_id != current_user.id || !@product.product_purchase_management.nil?
+      redirect_to root_path
+    end
   end
 end

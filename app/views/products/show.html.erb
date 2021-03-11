@@ -9,9 +9,9 @@
     <div class="item-img-content">
       <%= image_tag @product.image ,class:"item-box-img" %>
       <div class='sold-out'>
-          <% #if !@product.product_purchase_management.nil? %>
+          <% if !@product.product_purchase_management.nil? %>
             <span>Sold Out!!</span>
-          <%# end %>
+          <% end %>
           </div> 
     </div>
     <div class="item-price-box">
