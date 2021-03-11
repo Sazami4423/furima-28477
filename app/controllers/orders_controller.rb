@@ -39,7 +39,7 @@ class OrdersController < ApplicationController
   end
 
   def user_check
-    if @product.user_id != current_user.id || !@product.product_purchase_management.nil?
+    if @product.user_id == current_user.id || !@product.product_purchase_management.nil?
       redirect_to root_path
     end
   end
