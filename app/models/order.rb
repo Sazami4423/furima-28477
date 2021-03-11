@@ -1,5 +1,4 @@
 class Order < ApplicationRecord
-
   # tokenの値を取り扱えるようにする
   attr_accessor :token
 
@@ -8,10 +7,10 @@ class Order < ApplicationRecord
 
   # バリテーション
   validates :prefectures_id, numericality: { other_than: 1 }
-  with_options  presence: true do
+  with_options presence: true do
     validates :token
     validates :postal_code
-    validates :municipalities 
+    validates :municipalities
     validates :address
     validates :tel
   end
