@@ -26,7 +26,7 @@ class Product < ApplicationRecord
   belongs_to :user
   has_one_attached :image
 
-  # has_one :product_purchase_management
+  has_one :product_purchase_management
 
   def price_tax
     if price.blank?
