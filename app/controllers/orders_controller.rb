@@ -12,7 +12,7 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @prder = Order.new(order_params)
+    @order = Order.new(order_params)
     if @order.valid?
       pay_product
       @order.save

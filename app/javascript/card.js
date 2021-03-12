@@ -9,9 +9,9 @@ const pay = () => {
 
     const card = {
       number: formData.get("order[number]"),
-      cvc: formData.get("order[cvc]"),
       exp_month: formData.get("order[exp_month]"),
       exp_year: `20${formData.get("order[exp_year]")}`,
+      cvc: formData.get("order[cvc]"),
     };
 
     Payjp.createToken(card, (status, response) => {
@@ -22,10 +22,10 @@ const pay = () => {
         renderDom.insertAdjacentHTML("beforeend", tokenObj);
       }
       // フォーム情報を削除
-      document.getElementById("order_number").removeAttribute("name");
-      document.getElementById("order_cvc").removeAttribute("name");
-      document.getElementById("order_exp_month").removeAttribute("name");
-      document.getElementById("order_exp_year").removeAttribute("name");
+      document.getElementById("card-number").removeAttribute("name");
+      document.getElementById("card-exp-month").removeAttribute("name");
+      document.getElementById("card-exp-year").removeAttribute("name");
+      document.getElementById("card-cvc").removeAttribute("name");
 
       // サーバーサイドに情報を送信
       document.getElementById("charge-form").submit();
