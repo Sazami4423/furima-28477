@@ -7,9 +7,12 @@ class OrdersController < ApplicationController
     @order = Order.new
   end
 
+  def new
+    @order = Order.new
+  end
+
   def create
     @prder = Order.new(order_params)
-    binding.pry
     if @order.valid?
       pay_product
       @order.save
@@ -22,8 +25,8 @@ class OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:postal_code, :prefectures_id,
-                                  :municipalities, :address, :building_name, :tel, :price).merge(product_id: @product.id, token: params[:token], user_id: current_user.id)
+    params.require(:order).permit(:postal_code, :prefectures_id,:municipalities, :address, :building_name, :tel, :price).merge(
+      product_id: @product.id, token: params[:token], user_id: current_user.id)
   end
 
   def pay_product

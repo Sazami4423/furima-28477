@@ -4,7 +4,7 @@ class Order < ApplicationRecord
   attr_accessor :token, :postal_code, :prefectures_id, :municipalities, :address, :building_name, :tel, :user_id, :product_id
 
   # アソシエーション
-  # belongs_to :product_purchase_management
+  belongs_to :product_purchase_management, optional: true
 
   # バリテーション
   with_options presence: true do
