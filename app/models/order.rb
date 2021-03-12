@@ -18,9 +18,8 @@ class Order < ApplicationRecord
   validates :tel, format: {with:/\A\d{11}\z/}
 
   def save
-    Product_purchase_management.create(user_id: user_id, product_id: product_id)
-    product_purchase_management = Product_purchase_management.find_by(product_id: product_id)
-    Order.create(postal_code: postal_code, prefectures_id: prefectures_id, municipalities: municipalities, address: address, 
-      building_name: building_name, tel: tel, product_purchase_management_id: product_purchase_management.product_id)
+    ProductPurchaseManagement.create(user_id: user_id, product_id: product_id)
+    product_purchase_management = ProductPurchaseManagement.find_by(product_id: product_id)
+    Order.create(postal_code: postal_code, prefectures_id: prefectures_id, municipalities: municipalities, address: address, building_name: building_name, tel: tel, product_purchase_management_id: product_purchase_management.product_id)
   end
 end
