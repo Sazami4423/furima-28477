@@ -40,7 +40,7 @@
   has_one :product_purchase_management
 
 
-## ordersテーブル
+## Addressテーブル
 
 | Colum                       | Type       | Options                       |
 | --------------------------- | ---------- | ----------------------------- |
