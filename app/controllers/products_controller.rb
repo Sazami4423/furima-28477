@@ -51,8 +51,6 @@ class ProductsController < ApplicationController
   end
 
   def user_check
-    if @product.user_id != current_user.id || !@product.product_purchase_management.nil?
-      redirect_to root_path
-    end
+    redirect_to root_path if @product.user_id != current_user.id || !@product.product_purchase_management.nil?
   end
 end
