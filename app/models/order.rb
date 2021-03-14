@@ -1,5 +1,4 @@
-class Order
-
+class Order 
   include ActiveModel::Model
   # tokenの値を取り扱えるようにする
   attr_accessor :token, :postal_code, :prefectures_id, :municipalities, :address, :building_name, :tel, :user_id, :product_id
@@ -9,6 +8,9 @@ class Order
   validates :municipalities
   validates :address
   validates :token
+  validates :user_id
+  validates :product_id
+
   end
 
   validates :postal_code, format: {with: /\A\d{3}[-]\d{4}\z/}
