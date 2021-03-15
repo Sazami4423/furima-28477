@@ -17,6 +17,10 @@ RSpec.describe Order, type: :model do
         @order.building_name = ''
         expect(@order).to be_valid
       end
+      it '電話番号が10桁でも購入できる' do
+        @order.tel = '0331111222'
+        expect(@order).to be_valid
+      end
     end
     context '商品を購入できない時' do
       it 'postal_codeがnulでは登録できない' do
@@ -35,7 +39,7 @@ RSpec.describe Order, type: :model do
         expect(@order.errors.full_messages).to include('Postal code is invalid')
       end
       it 'prefectures_idが--(1)では登録できない' do
-        @order.prefectures_id = '1'
+        @order.prefectures_id = 1
         @order.valid?
         expect(@order.errors.full_messages).to include('Prefectures must be other than 1')
       end
@@ -59,12 +63,12 @@ RSpec.describe Order, type: :model do
         @order.valid?
         expect(@order.errors.full_messages).to include('Tel is invalid')
       end
-      it 'telが11桁以内では登録できない' do
-        @order.tel = '1234567890'
+      it 'telが10桁以内では登録できない' do
+        @order.tel = '123456789'
         @order.valid?
         expect(@order.errors.full_messages).to include('Tel is invalid')
       end
-      it 'telが11桁以内では登録できない' do
+      it 'telが11桁以上では登録できない' do
         @order.tel = '1234567890123'
         @order.valid?
         expect(@order.errors.full_messages).to include('Tel is invalid')
