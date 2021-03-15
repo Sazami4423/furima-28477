@@ -36,10 +36,11 @@
 ### Association
 
   belongs_to :user
+  has_one_attached :image
   has_one :product_purchase_management
 
 
-## ordersテーブル
+## Addressテーブル
 
 | Colum                       | Type       | Options                       |
 | --------------------------- | ---------- | ----------------------------- |
