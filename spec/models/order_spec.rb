@@ -73,6 +73,11 @@ RSpec.describe Order, type: :model do
         @order.valid?
         expect(@order.errors.full_messages).to include('Tel is invalid')
       end
+      it 'telが英数字混合では登録できない' do
+        @order.tel = 'aZ23456789012'
+        @order.valid?
+        expect(@order.errors.full_messages).to include('Tel is invalid')
+      end
       it 'tokenがnilでは登録できない' do
         @order.token = ''
         @order.valid?
